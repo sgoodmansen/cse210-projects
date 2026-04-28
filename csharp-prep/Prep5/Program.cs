@@ -10,48 +10,51 @@ class Program
 
         string userName = PromptUserName();
         int userNumber = PromptUserNumber();
-        int birthYear = PromptUserYear();
-        double square = SquareNumber(userNumber);
+        int birthYear = PromptUserBirthYear();
+        int squaredNumber = SquareNumber(userNumber);
 
-        Console.WriteLine($"{userName}, the square of your number is {square}");
-        Console.WriteLine($"{userName}, you will turn {2026 - birthYear} years old this year.");
+        DisplayResult(userName, squaredNumber, birthYear);
+    }
 
+    static void DisplayWelcome()
+    {
+        Console.WriteLine("Welcome to the Program!");
+    }
 
+    static string PromptUserName()
+    {
+        Console.Write("Please enter your name: ");
+        string name = Console.ReadLine();
 
-        static void DisplayWelcome()
-        {
-            Console.WriteLine("Welcome to the Program!");
-        }
+        return name;
+    }
+    
+    static int PromptUserNumber()
+    {
+        Console.Write("Please enter your favorite number: ");
+        int number = int.Parse(Console.ReadLine());
 
-        static string PromptUserName()
-        {
-            Console.Write("Please enter your name: ");
-            string name = Console.ReadLine();
+        return number;
+    }
 
-            return name;
-        }
-        
-        static int PromptUserNumber()
-        {
-            Console.Write("Please enter your favorite number: ");
-            int number = int.Parse(Console.ReadLine());
+    static int PromptUserBirthYear()
+    {
+        Console.Write("Please enter the year you were born: ");
+        int year = int.Parse(Console.ReadLine());
 
-            return number;
-        }
+        return year;
+    }
 
-        static int PromptUserYear()
-        {
-            Console.Write("Please enter the year you were born: ");
-            int year = int.Parse(Console.ReadLine());
+    static int SquareNumber(int x)
+    {
+        int sqnum = x * x;
 
-            return year;
-        }
+        return sqnum;
+    }
 
-        static double SquareNumber(int x)
-        {
-            double num = Math.Pow(x, 2);
-
-            return num;
-        }
+    static void DisplayResult(string name, int square, int birthYear)
+    {
+        Console.WriteLine($"{name}, the square of your number is {square}");
+        Console.WriteLine($"{name}, you will turn {2026 - birthYear} years old this year.");  
     }
 }
