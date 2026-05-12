@@ -12,8 +12,8 @@ public class Journal
         foreach (Entry entry in entries)
         {
             Console.WriteLine();
-            Console.WriteLine($"Date: {entry.entryDate} - Prompt: {entry.prompt}");
-            Console.WriteLine(entry.response);
+            Console.WriteLine($"Date: {entry._entryDate} - Prompt: {entry._prompt}");
+            Console.WriteLine(entry._response);
             Console.WriteLine("-----------------------------------------------------------------------------------");
         }
     }
@@ -24,7 +24,7 @@ public class Journal
         {
             foreach (Entry entry in entries)
             {
-                outputFile.WriteLine($"{entry.entryDate}|{entry.prompt}|{entry.response}");
+                outputFile.WriteLine($"{entry._entryDate}|{entry._prompt}|{entry._response}");
             }
         }  
     }
@@ -38,9 +38,9 @@ public class Journal
             string[] parts = line.Split("|");
 
             Entry entry = new Entry();
-            entry.entryDate = parts[0];
-            entry.prompt = parts[1];
-            entry.response = parts[2];
+            entry._entryDate = parts[0];
+            entry._prompt = parts[1];
+            entry._response = parts[2];
 
             entries.Add(entry);
 

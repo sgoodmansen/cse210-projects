@@ -29,9 +29,9 @@ class Program
                         string response = Console.ReadLine();
 
                         Entry newEntry = new Entry();
-                        newEntry.entryDate = DateTime.Now.ToShortDateString();
-                        newEntry.prompt = prompt;
-                        newEntry.response = response;
+                        newEntry._entryDate = DateTime.Now.ToShortDateString();
+                        newEntry._prompt = prompt;
+                        newEntry._response = response;
 
                         myJournal.AddEntry(newEntry);
                         Console.WriteLine ($"Entry Saved. Total Journal Entries: {myJournal.GetCount()}");

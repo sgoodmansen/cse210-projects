@@ -6,7 +6,7 @@ public class PromptGenerator
         "What made you smile today?",
         "What did you learn today?",
         "What was the nicest thing you did today?",
-        "What was your favorite meal today?"
+        "What was the best food you ate today?"
     };
 
     Random randomGen = new Random();

@@ -1,7 +1,7 @@
 public class Entry
 {
-    public string entryDate;
+    public string _entryDate;
 
-    public string prompt;
-    public string response;
+    public string _prompt;
+    public string _response;
 }
