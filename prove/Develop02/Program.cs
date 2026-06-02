@@ -11,7 +11,6 @@ class Program
         Journal myJournal = new Journal();
         PromptGenerator promptGenerator = new PromptGenerator();
 
-
         bool running = true;
 
         while (running) 
