@@ -15,12 +15,14 @@ class Program
         while (running)
         {
             int choice = DisplayMenu();
+            Console.ResetColor();
 
             switch (choice)
             {
                 case 1:  //Create New Goal
                     {
                         int goaltype = DisplaySubmenu();
+                        Console.ResetColor();
 
                         switch (goaltype)
                         {
@@ -53,7 +55,7 @@ class Program
                             
                             default:
                                 {
-                                    Console.WriteLine("Invalid Choice - Please select a number between 1 - 3");
+                                    Console.WriteLine("Invalid Choice");
                                     break;
                                 }
                         }
@@ -99,18 +101,21 @@ class Program
 
                 case 7: //Quit Program
                     {
-                        Console.WriteLine($"Goals will be lost unless you saved them.");
-                        Console.Write($"Do you need to save goals before quitting? (y/n) ");
-                        string answer = Console.ReadLine().ToLower();
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine($"Goals will be lost unless you save them.");
+                        string answer = GetRequiredText("Do you need to save goals before quitting? (y/n) ").ToLower();
+                        Console.ResetColor();
 
-                        if (answer == "y")
+                        if (answer == "n")
                         {
-                            running = true;
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.WriteLine($"Thanks for using the Goal Program. Good-bye.\n");
+                            running = false;
+                            Console.ResetColor();
                         }
                         else
                         {
-                            Console.WriteLine($"Thanks for using the Goal Program. Good-bye.\n");
-                            running = false;
+                            running = true;
                         } 
                         
                         break;
@@ -118,7 +123,9 @@ class Program
                     
                 default:  //Invalid Choice
                     {
-                        Console.WriteLine("Invalid Choice - Please select a number between 1 - 6");
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine("Invalid Choice");
+                        Console.ResetColor();
                         break;    
                     }      
             }
@@ -137,10 +144,9 @@ class Program
         Console.WriteLine("  5. Record Event");
         Console.WriteLine("  6. Delete Goal");
         Console.WriteLine("  7. Quit");
-        Console.Write("Select a choice from the menu: ");
-        string userChoice = Console.ReadLine();
-        return int.Parse(userChoice);
 
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        return GetPositiveInteger("\nSelect a choice from the menu: ", 1, 7);
     }
 
     static int DisplaySubmenu()
@@ -151,9 +157,9 @@ class Program
         Console.WriteLine("  1. Simple Goal"); 
         Console.WriteLine("  2. Eternal Goal"); 
         Console.WriteLine("  3. Checklist Goal");
-        Console.Write("Which type of goal would you like to create? ");
-        string userChoice = Console.ReadLine();
-        return int.Parse(userChoice); 
+
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        return GetPositiveInteger("\nWhich type of goal would you like to create? ", 1, 3);
     }
 
     static GoalInfo GetGoalInfo()
@@ -171,7 +177,9 @@ class Program
     {
         if (goals.Count == 0)
         {
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("There are no goals. Now would be a good time to write one.");
+            Console.ResetColor();
             return;
         }
 
@@ -181,7 +189,7 @@ class Program
 
         foreach (Goal goal in goals)
         {
-            Console.Write ($"{i}. ");
+            Console.Write ($"  {i}. ");
             Console.WriteLine(goal.GetGoalDetails());
             i++;
         }      
@@ -192,7 +200,9 @@ class Program
     {
         if (goals.Count == 0)
         {
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("There are no goals to record.");
+            Console.ResetColor();
             return;
         }
 
@@ -201,11 +211,13 @@ class Program
 
         for (int i = 0; i < goals.Count; i++)
         {
-            Console.WriteLine($"{i+1}. {goals[i].GetGoalName()}");
+            Console.WriteLine($"  {i+1}. {goals[i].GetGoalName()}");
         } 
 
-        Console.Write("\nWhich goal did you accomplish? ");
-        int choice = int.Parse(Console.ReadLine());
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        int choice = GetPositiveInteger("\nWhich goal did you accomplish? ", 1, goals.Count);
+        Console.ResetColor();
+
         int index = choice -1;
 
         if (index >= 0 && index < goals.Count)
@@ -214,7 +226,10 @@ class Program
             _score += pointsEarned;
 
             RewardMessage reward = new RewardMessage();
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine($"{reward.GetRandomMessage()} {pointsEarned} points!");
+            Console.ResetColor();
+
             DisplayScore();
         }
         else
@@ -229,7 +244,9 @@ class Program
     {
         if (goals.Count == 0)
         {
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("There are no goals to delete.");
+            Console.ResetColor();
             return;
         }
         
@@ -238,11 +255,10 @@ class Program
 
         for (int i = 0; i < goals.Count; i++)
         {
-            Console.WriteLine($"{i+1}. {goals[i].GetGoalName()}");
+            Console.WriteLine($"  {i+1}. {goals[i].GetGoalName()}");
         } 
 
-        Console.Write("\nWhich goal would you like to delete? ");
-        int choice = int.Parse(Console.ReadLine());
+        int choice = GetPositiveInteger("\nWhich goal would you like to delete? ", 1, goals.Count);
 
         int index = choice -1;
 
@@ -250,8 +266,10 @@ class Program
         {
             string goalname = goals[index].GetGoalName();
 
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.Write($"Are you sure you want to delete '{goalname}' (y/n)? ");
             string answer = Console.ReadLine().ToLower();
+            Console.ResetColor();
 
             if (answer == "y")
             {
@@ -260,30 +278,37 @@ class Program
             }
             else
             {
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("Delete cancelled.");
+                Console.ResetColor();
             }           
         }
         else
         {
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Invalid goal selection.");
+            Console.ResetColor();
         }
     }
 
     static void DisplayScore()
     {
+        Console.ForegroundColor = ConsoleColor.Green;
         Console.WriteLine($"\nYou have {_score} points");
+        Console.ResetColor();
     }
 
     static void WriteToFile(List<Goal> goals)
     {
         if (goals.Count == 0)
         {
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("There are no goals to save.");
+            Console.ResetColor();
             return;
         }
 
-        Console.Write("What is the filename for the goal file? ");
-        string filename = Console.ReadLine();
+        string filename = GetRequiredText("What is the filename for the goal file? ");
 
         using (StreamWriter outputFile = new StreamWriter(filename))
         {
@@ -300,8 +325,9 @@ class Program
             }
 
         }
-
-        Console.WriteLine($"{goals.Count} Goals saved successfully to {filename}");    
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine($"{goals.Count} Goals saved successfully to {filename}");   
+        Console.ResetColor(); 
     }
 
     static void ReadFromFile()
@@ -311,7 +337,9 @@ class Program
 
         if (!File.Exists(filename))
         {
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine($"Error: {filename} was not found.");
+            Console.ResetColor();
             return;
         }
 
@@ -365,14 +393,18 @@ class Program
                     }
             }
         }
+        Console.ForegroundColor = ConsoleColor.Green;
         Console.WriteLine($"\n{goals.Count} Goals successfully loaded from {filename}");
+        Console.ResetColor();
         DisplayScore();      
     }
 
     static void Pause()
     {
+        Console.ForegroundColor = ConsoleColor.Blue;
         Console.Write("\nPress Enter to continue.");
         Console.ReadLine(); 
+        Console.ResetColor();
     }
 
     static int GetPositiveInteger(string prompt)
@@ -387,10 +419,29 @@ class Program
             {
                 return value;
             }
-
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Please enter a positive whole number");
+            Console.ResetColor();
         }
     }
+
+    static int GetPositiveInteger(string prompt, int min, int max)
+{
+    int value;
+
+    while (true)
+    {
+        Console.Write(prompt);
+
+        if (int.TryParse(Console.ReadLine(), out value) &&
+            value >= min && value <= max)
+        {
+            return value;
+        }
+
+        Console.WriteLine($"Please enter a number between {min} and {max}.");
+    }
+}
 
     static string GetRequiredText(string prompt)
     {
@@ -403,7 +454,9 @@ class Program
 
             if (string.IsNullOrEmpty(value))
             {
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("This field cannot be blank.");
+                Console.ResetColor();
             }
         } while (string.IsNullOrEmpty(value));
 

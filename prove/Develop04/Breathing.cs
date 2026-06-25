@@ -3,7 +3,13 @@ public class Breathing : BaseActivity
     public Breathing()
     {
         _activityName = "Breathing";
-        _activityDescription = "This activity will help you relax through slow breathing.";
+        _activityDescription = "This activity will help you relax through slow breathing. \nBreathe In for 4 seconds - Breathe Out for 6 seconds";
+    }
+
+    public int GetDuration()
+    {
+        int duration = _activityDuration;
+        return duration;
     }
 
     public void Run()
@@ -21,11 +27,11 @@ public class Breathing : BaseActivity
             Console.WriteLine();
             Console.WriteLine($"--- Cycle {cycle} ---");
             Console.Write("Breathe in... ");
-            CountDown(4);
+            LaunchCountDown(4);
             Console.WriteLine();
 
             Console.Write("Breathe out... ");
-            CountDown(6);
+            LaunchCountDown(6);
 
             Console.WriteLine();
             cycle ++;

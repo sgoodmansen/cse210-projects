@@ -10,21 +10,18 @@ public class Reflecting : BaseActivity
         return _prompts[_random.Next(_prompts.Count)];
     }
 
-    private string GetRandomQuestion()
+    private string GetQuestion(List<string> tempQuestions)
     {
-        return _questions[_random.Next(_questions.Count)];
+        int index = _random.Next(tempQuestions.Count);
+        string question = tempQuestions[index];
+        tempQuestions.RemoveAt(index);
+        return question;
     }
 
     private string DisplayPrompt()
     {
         string prompt = GetRandomPrompt();
         return prompt;
-    }
-
-    private string DisplayQuestion()
-    {
-        string question = GetRandomQuestion();
-        return question;
     }
 
     public Reflecting()
@@ -48,19 +45,30 @@ public class Reflecting : BaseActivity
         _questions.Add("What could you learn from this experience that applies to other situations?");
         _questions.Add("What did you learn about yourself through this experience?");
         _questions.Add("How can you keep this experience in mind in the future?");
+        _questions.Add("What would you change about this experience?");
+    }
+
+    public int GetDuration()
+    {
+        int duration = _activityDuration;
+        return duration;
     }
 
     public void Run()
     {
+        List<string> tempQuestions = new List<string>(_questions);
+
         DisplayStart();
 
         DisplayGetReady();
         
         // Show a random prompt
+        Console.WriteLine();
         Console.WriteLine("Consider the following prompt:");
-        Console.WriteLine($"--- {DisplayPrompt()} ---");
+        Console.WriteLine($"---- {DisplayPrompt()} ----");
 
         // Let the user think about it
+        Console.WriteLine();
         Console.WriteLine("When you have something in mind, press Enter to continue.");
         Console.ReadLine();
 
@@ -69,12 +77,18 @@ public class Reflecting : BaseActivity
         Console.Write("You may begin in: ");
         CountDown(5);
 
+        Console.Clear();
+        Console.WriteLine($"---- {DisplayPrompt().ToUpper()} ----");
         // Ask reflection questions until time expires
         DateTime endTime = DateTime.Now.AddSeconds(_activityDuration);
         while (DateTime.Now < endTime)
         {
-            Console.Write(DisplayQuestion());
-            Spinner(5);  
+            if (tempQuestions.Count == 0)                           //if duration of activity is longer than question list
+            {
+                tempQuestions = new List<string>(_questions);       //create a new questions list that is shuffled randomly
+            }
+            Console.WriteLine(GetQuestion(tempQuestions));
+            CountDots(5);     
         }
 
 
