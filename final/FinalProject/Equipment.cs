@@ -10,7 +10,7 @@ public abstract class Equipment
     private EquipmentStatus _status;
 
     // protected Location _location;
-    // protected Employee _assignedEmployee;
+    protected Employee _assignedEmployee;
 
     
 
@@ -29,6 +29,16 @@ public abstract class Equipment
         Console.WriteLine($"Brand: {_brand}");
         Console.WriteLine($"Model: {_model}");
         Console.WriteLine($"Status: {_status}");
+
+        if (_assignedEmployee == null)
+        {
+            Console.WriteLine("Assigned To: None");
+        }
+        else
+        {
+            Console.WriteLine($"Assigned To: {_assignedEmployee.GetFullName()}");
+            Console.WriteLine($"Department: {_assignedEmployee.GetDepartment()}");
+        }
     }
 
     public virtual void DisplaySummary()
@@ -38,13 +48,16 @@ public abstract class Equipment
             $"{GetEquipmentType(),-10} " +
             $"{_brand, -12} " +
             $"{_model, -18} " +
-            $"{_status, -12} "
+            $"{_status, -12} " +
+            $"{GetAssignedEmployeeName(), -20}"
         );
     }
 
     public virtual string ToFileString()
     {
-        return $"{GetEquipmentType()}|{_assetTag}|{_brand}|{_model}|{_serialNumber}|{_status}";
+        string employeeId = _assignedEmployee == null ? "None" : _assignedEmployee.GetEmployeeId();
+
+        return $"EQUIPMENT|{GetEquipmentType()}|{_assetTag}|{_brand}|{_model}|{_serialNumber}|{_status}|{employeeId}";
     }
 
     public void SetStatus(EquipmentStatus status)
@@ -69,13 +82,15 @@ public abstract class Equipment
         return _status == EquipmentStatus.CheckedOut;
     }
 
-    public void CheckOut()
+    public void CheckOut(Employee employee)
     {
+        _assignedEmployee = employee;
         _status = EquipmentStatus.CheckedOut;
     }
 
     public void CheckIn()
     {
+        _assignedEmployee = null;
         _status = EquipmentStatus.Available;
     }
 
@@ -91,8 +106,7 @@ public abstract class Equipment
     public virtual bool EditDetails()
     {
         Console.Clear();
-        Console.WriteLine("Current Information:");
-        Console.WriteLine("-----------------------------");
+        InputHelper.DisplayHeader("Current Information:");
         DisplayInfo();
 
         Console.WriteLine("\nWhat would you like to edit? ");
@@ -101,7 +115,7 @@ public abstract class Equipment
         Console.WriteLine(" 3. Serial Number");
         Console.WriteLine(" 4. Cancel");
 
-        int choice = InputHelper.GetPositiveInteger("Choice: ", 1, 4);
+        int choice = InputHelper.GetIntegerInRange("Choice: ", 1, 4);
 
         switch (choice)
         {
@@ -119,5 +133,25 @@ public abstract class Equipment
             default:
                 return false;    
         }
+    }
+
+    public string GetAssignedEmployeeName()
+    {
+        if(_assignedEmployee == null)
+        {
+            return "None";
+        }
+
+        return _assignedEmployee.GetFullName();
+    }
+
+    public Employee GetAssignedEmployee()
+    {
+        return _assignedEmployee;
+    }
+
+    public void SetAssignedEmployee(Employee employee)
+    {
+        _assignedEmployee = employee;
     }
 }

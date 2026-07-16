@@ -44,8 +44,7 @@ public class Monitor : Equipment
     public override bool EditDetails()
     {
         Console.Clear();
-        Console.WriteLine("Current Information:");
-        Console.WriteLine("-----------------------------");
+        InputHelper.DisplayHeader("Current Information:");
         DisplayInfo();
 
         Console.WriteLine("\nWhat would you like to edit? ");
@@ -58,7 +57,7 @@ public class Monitor : Equipment
         Console.WriteLine(" 7. HDMI Port");
         Console.WriteLine(" 8. Cancel");
 
-        int choice = InputHelper.GetPositiveInteger("Choice: ", 1, 8);
+        int choice = InputHelper.GetIntegerInRange("Choice: ", 1, 8);
 
         switch (choice)
         {

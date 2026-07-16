@@ -1,27 +1,35 @@
-Desktop|8286|Dell|OptiPlex 7000|C9TZ9R3|Available|Intel i5|8|256
-Laptop|8060|Dell|Latitude 5501|F8DG2Z2|Available|Intel i5|8|256|15
-Laptop|8061|Dell|Latitude 5501|8Y2LYY2|Available|Intel i5|8|256|15
-Monitor|8251|LG|32BN50U|109MXPHDE496|Available|22|True|True|False
-Monitor|8250|LG|32BN50U|109MXSKDE502|Available|22|True|True|False
-Desktop|10002|Dell|Optiplex 7070|B9DF4Z2|Available|Intel i5|8|256
-Desktop|3787|Dell|Optiplex 5040|8WJH082|Available|Intel i5|8|256
-Desktop|3971|Dell|OptiPlex 3050|BX4QMR2|Available|Intel i5|8|256
-Laptop|8230|Dell|Latitude 5511|C7R6Y33|Available|Intel i5|8|256|15
-Laptop|8059|Dell|Latitude 5501|HJ88L13|Available|Intel i5|8|256|15
-Laptop|8195|Dell|Latitude 5591|B6SVRN2|Available|Intel i5|8|256|15
-Laptop|8211|Dell|XPS 15 9575|2X74SN2|Available|Intel i5|8|256|15
-Laptop|8029|Dell|Latitude 5501|7ZH5ZY2|Available|Intel i5|8|256|15
-Laptop|8026|Dell|G3 15 3590|31DXLT2|Available|Intel i5|8|256|15
-Desktop|3974|Dell|OptiPlex 7020|H1WJB42|Available|Intel i5|8|256
-Desktop|8116|Dell|Optiplex 7070|9W99SZ2|Available|Intel i5|8|256
-Desktop|8247|Dell|OptiPlex 7090|2PRQ1G3|Available|Intel i5|8|256
-Desktop|10501|Dell|OptiPlex 7090|2PVN1G3|Available|Intel i5|8|256
-Monitor|10502|Dell|P2719H|4MP58R2|Available|22|True|True|False
-Desktop|8050|Dell|OptiPlex 5050|2Y0Z8N2|Available|Intel i5|8|256
-Laptop|10503|Dell|Precision 5530|H9Q50X2|Available|Intel i5|8|256|15
-Desktop|3966|Dell|OptiPlex 3050|H07W0S2|Available|Intel i5|8|256
-Desktop|3836|Dell|Optiplex 5040|5QBXFB2|Available|Intel i5|8|256
-Desktop|3619|Dell|OptiPlex 980|8RZYDP1|Available|Intel i5|8|256
-Desktop|5224|Dell|OptiPlex 3050|GXM21Q2|Available|Intel i5|8|256
-Desktop|3997|Dell|OptiPlex 7050|F6B06K2|Available|Intel i5|8|256
-Printer|1294|Canon|LBP6780dn|unknown|Available|Laser|False
+EMPLOYEE|1001|Alex|Carter|IT|Active
+EMPLOYEE|1002|Morgan|Reed|Human Resources|Active
+EMPLOYEE|1003|Taylor|Brooks|Finance|Active
+EMPLOYEE|1004|Jordan|Ellis|Marketing|Active
+EMPLOYEE|1005|Casey|Bennett|Operations|Active
+EMPLOYEE|1006|Avery|Sullivan|Customer Support|Active
+EMPLOYEE|1007|Cameron|Foster|Engineering|Active
+EMPLOYEE|1008|Riley|Morgan|Sales|Inactive
+EMPLOYEE|1009|Hayden|Pierce|Accounting|Active
+EQUIPMENT|Desktop|8286|Dell|Optiplex 7000|C9TZ9R3|CheckedOut|1001|Intel i5|8|256
+EQUIPMENT|Laptop|8060|Dell|Latitude 5501|F8DG2Z2|CheckedOut|1004|Intel i5|8|256|15
+EQUIPMENT|Monitor|8251|LG|32BN50U|109MXPHDE496|CheckedOut|1001|22|True|True|False
+EQUIPMENT|Monitor|8250|LG|32BN50U|109MXSKDE502|CheckedOut|1001|22|True|True|False
+EQUIPMENT|Desktop|10002|Dell|Optiplex 7070|B9DF4Z2|Available|None|Intel i5|8|256
+EQUIPMENT|Desktop|3787|Dell|Optiplex 5040|8WJH082|CheckedOut|1003|Intel i5|16|512
+EQUIPMENT|Desktop|3971|Dell|OptiPlex 3050|BX4QMR2|Available|None|Intel i5|8|256
+EQUIPMENT|Laptop|8230|Dell|Latitude 5511|C7R6Y33|Available|None|Intel i5|8|256|15
+EQUIPMENT|Laptop|8059|Dell|Latitude 5501|HJ88L13|Available|None|Intel i5|8|256|15
+EQUIPMENT|Laptop|8195|Dell|Latitude 5591|B6SVRN2|Available|None|Intel i5|8|256|15
+EQUIPMENT|Laptop|8211|Dell|XPS 15 9575|2X74SN2|Available|None|Intel i5|8|256|15
+EQUIPMENT|Laptop|8029|Dell|Latitude 5501|7ZH5ZY2|Available|None|Intel i5|8|256|15
+EQUIPMENT|Laptop|8026|Dell|G3 15 3590|31DXLT2|Available|None|Intel i5|8|256|15
+EQUIPMENT|Desktop|3974|Dell|OptiPlex 7020|H1WJB42|Available|None|Intel i5|8|256
+EQUIPMENT|Desktop|8116|Dell|Optiplex 7070|9W99SZ2|Available|None|Intel i5|8|256
+EQUIPMENT|Desktop|8247|Dell|OptiPlex 7090|2PRQ1G3|Available|None|Intel i5|8|256
+EQUIPMENT|Desktop|10501|Dell|OptiPlex 7090|2PVN1G3|Available|None|Intel i5|8|256
+EQUIPMENT|Monitor|10502|Dell|P2719H|4MP58R2|Available|None|22|True|True|False
+EQUIPMENT|Desktop|8050|Dell|OptiPlex 5050|2Y0Z8N2|Available|None|Intel i5|8|256
+EQUIPMENT|Laptop|10503|Dell|Precision 5530|H9Q50X2|Available|None|Intel i5|8|256|15
+EQUIPMENT|Desktop|3966|Dell|OptiPlex 3050|H07W0S2|Available|None|Intel i5|8|256
+EQUIPMENT|Desktop|3836|Dell|Optiplex 5040|5QBXFB2|Available|None|Intel i5|8|256
+EQUIPMENT|Desktop|3619|Dell|OptiPlex 980|8RZYDP1|Available|None|Intel i5|8|256
+EQUIPMENT|Desktop|5224|Dell|OptiPlex 3050|GXM21Q2|Available|None|Intel i5|8|256
+EQUIPMENT|Desktop|3997|Dell|OptiPlex 7050|F6B06K2|Available|None|Intel i5|8|256
+EQUIPMENT|Printer|1294|Canon|LBP6780dn|unknown|Retired|None|Laser|False

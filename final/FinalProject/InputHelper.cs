@@ -1,5 +1,5 @@
 public class InputHelper {
-    public static int GetPositiveInteger(string prompt)
+    public static int GetIntegerInRange(string prompt)
     {
         int value;
 
@@ -16,7 +16,7 @@ public class InputHelper {
         }
     }
 
-    public static int GetPositiveInteger(string prompt, int min, int max)
+    public static int GetIntegerInRange(string prompt, int min, int max)
     {
         int value;
 
@@ -97,7 +97,7 @@ public class InputHelper {
         Console.WriteLine(" 4. Label");
         Console.WriteLine(" 5. Multifunction");
 
-        int choice = GetPositiveInteger("Choice: ", 1, 5);
+        int choice = GetIntegerInRange("Choice: ", 1, 5);
 
         switch (choice)
         {
@@ -114,6 +114,60 @@ public class InputHelper {
             default:
                 return PrinterType.Laser;
         }
+    }
+    public static EmployeeStatus GetEmployeeStatus()
+    {
+        Console.WriteLine("\nEmployee Status");
+        Console.WriteLine(" 1. Active");
+        Console.WriteLine(" 2. Inactive");
+        Console.WriteLine(" 3. Terminated");
+
+        int choice = InputHelper.GetIntegerInRange("\nSelect a status: ", 1, 3);
+
+        switch (choice)
+        {
+            case 1:
+                return EmployeeStatus.Active;
+
+            case 2:
+                return EmployeeStatus.Inactive;
+
+            case 3:
+                return EmployeeStatus.Terminated;
+
+            default:
+                return EmployeeStatus.Active;
+        }
+    }
+
+    public static void DisplayError(string message)
+    {
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine(message);
+        Console.ResetColor();
+    }
+
+    public static void DisplayWarning(string message)
+    {
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine(message);
+        Console.ResetColor();    
+    }
+
+    public static void DisplaySuccess(string message)
+    {
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine(message);
+        Console.ResetColor();    
+    }
+
+    public static void DisplayHeader(string title)
+    {
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine();
+        Console.WriteLine(title);
+        Console.WriteLine(new string('-', title.Length));
+        Console.ResetColor();
     }
 
     public static void Pause()

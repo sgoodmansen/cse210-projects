@@ -36,8 +36,7 @@ public class Desktop:Equipment
     public override bool EditDetails()
     {
         Console.Clear();
-        Console.WriteLine("Current Information:");
-        Console.WriteLine("-----------------------------");
+        InputHelper.DisplayHeader("Current Information:");
         DisplayInfo();
 
         Console.WriteLine("\nWhat would you like to edit? ");
@@ -49,7 +48,7 @@ public class Desktop:Equipment
         Console.WriteLine(" 6. Storage");
         Console.WriteLine(" 7. Cancel");
 
-        int choice = InputHelper.GetPositiveInteger("Choice: ", 1, 7);
+        int choice = InputHelper.GetIntegerInRange("Choice: ", 1, 7);
 
         switch (choice)
         {
@@ -66,10 +65,10 @@ public class Desktop:Equipment
                 _processor = InputHelper.GetRequiredText("New processor: ");
                 return true;
             case 5:
-                _ram = InputHelper.GetPositiveInteger("New RAM (GB): ");
+                _ram = InputHelper.GetIntegerInRange("New RAM (GB): ");
                 return true;
             case 6:
-                _storage = InputHelper.GetPositiveInteger("New Storage (GB): ");
+                _storage = InputHelper.GetIntegerInRange("New Storage (GB): ");
                 return true;
             case 7:
                 return false;

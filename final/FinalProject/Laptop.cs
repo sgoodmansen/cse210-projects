@@ -39,8 +39,7 @@ public class Laptop:Equipment
     public override bool EditDetails()
     {
         Console.Clear();
-        Console.WriteLine("Current Information:");
-        Console.WriteLine("-----------------------------");
+        InputHelper.DisplayHeader("Current Information:");
         DisplayInfo();
 
         Console.WriteLine("\nWhat would you like to edit? ");
@@ -53,7 +52,7 @@ public class Laptop:Equipment
         Console.WriteLine(" 7. Screen Size");
         Console.WriteLine(" 8. Cancel");
 
-        int choice = InputHelper.GetPositiveInteger("Choice: ", 1, 8);
+        int choice = InputHelper.GetIntegerInRange("Choice: ", 1, 8);
 
         switch (choice)
         {
@@ -70,10 +69,10 @@ public class Laptop:Equipment
                 _processor = InputHelper.GetRequiredText("New processor: ");
                 return true;
             case 5:
-                _ram = InputHelper.GetPositiveInteger("New RAM (GB): ");
+                _ram = InputHelper.GetIntegerInRange("New RAM (GB): ");
                 return true;
             case 6:
-                _storage = InputHelper.GetPositiveInteger("New Storage (GB): ");
+                _storage = InputHelper.GetIntegerInRange("New Storage (GB): ");
                 return true;
             case 7:
                 _screenSize = InputHelper.GetPositiveDouble("New Screen Size: ");
